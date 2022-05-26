@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  ros2-vim:
+    image: ros2-vim:1.0.0
+    build:
+      context: .
+      args:
+        UID: 1000
+        GID: 1000
+        USERNAME: ryo
+        GROUPNAME: ryo
+    volumes:
+      - $PWD:/home/ryo/src
+      - /home/ryo/dotfiles:/home/ryo/dotfiles
+      - sandbox-config:/home/ryo/.config
+    working_dir: /home/ryo/src
+
+volumes:
+  sandbox-config:
