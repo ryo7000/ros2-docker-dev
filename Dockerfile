@@ -13,7 +13,6 @@ RUN cd ccls && \
     cp Release/ccls /usr/local/bin
 
 FROM ubuntu:jammy
-ARG DEBIAN_FRONTEND=noninteractive
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
@@ -35,7 +34,7 @@ RUN apt-get update && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv 4ab0f789cba31744cc7da76a8cf63ad3f06fc659 && \
     echo 'deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_16.x jammy main' > /etc/apt/sources.list.d/nodesource.list && \
     curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | gpg --dearmor | tee /usr/share/keyrings/nodesource.gpg >/dev/null && \
-    apt-get update && apt-get install -y \
+    apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     make \
     cmake \
     g++ \
