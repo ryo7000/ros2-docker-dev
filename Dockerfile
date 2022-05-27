@@ -2,7 +2,8 @@ FROM ubuntu:jammy AS ccls
 
 # C++
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt install -y curl build-essential cmake zlib1g-dev libncurses-dev clang-14 libclang-14-dev git
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    curl ca-certificates build-essential cmake zlib1g-dev libncurses-dev clang-14 libclang-14-dev llvm-14-dev git
 RUN git clone --depth=1 --recursive https://github.com/MaskRay/ccls
 RUN cd ccls && \
     cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release \
@@ -34,7 +35,7 @@ RUN apt-get update && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv 4ab0f789cba31744cc7da76a8cf63ad3f06fc659 && \
     echo 'deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_16.x jammy main' > /etc/apt/sources.list.d/nodesource.list && \
     curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | gpg --dearmor | tee /usr/share/keyrings/nodesource.gpg >/dev/null && \
-    apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     make \
     cmake \
     g++ \
