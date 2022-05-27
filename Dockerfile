@@ -10,7 +10,7 @@ RUN cd ccls && \
     -DCMAKE_PREFIX_PATH=/usr/lib/llvm-14 \
     -DLLVM_INCLUDE_DIR=/usr/lib/llvm-14/include \
     -DLLVM_BUILD_INCLUDE_DIR=/usr/include/llvm-14 && \
-    cmake --build Release && \
+    cmake --build Release -- -j $(nproc) && \
     cp Release/ccls /usr/local/bin
 
 FROM ubuntu:jammy
