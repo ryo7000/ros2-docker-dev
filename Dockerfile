@@ -59,10 +59,10 @@ COPY --from=ccls /usr/local/bin/ccls /usr/local/bin
 USER $USERNAME
 
 RUN mkdir /home/$USERNAME/.config && \
-    ln -s dotfiles/vim/.vim /home/$USERNAME && \
-    ln -s dotfiles/vim/.vimrc /home/$USERNAME && \
-    ln -s dotfiles/zsh/.zsh /home/$USERNAME && \
-    ln -s dotfiles/zsh/.zshenv /home/$USERNAME
+    ln -s /home/$USERNAME/dotfiles/vim/.vim /home/$USERNAME && \
+    ln -s /home/$USERNAME/dotfiles/vim/.vimrc /home/$USERNAME && \
+    ln -s /home/$USERNAME/dotfiles/zsh/zsh /home/$USERNAME/.config/zsh && \
+    ln -s /home/$USERNAME/dotfiles/zsh/.zshenv /home/$USERNAME
 
 WORKDIR /home/$USERNAME/
 
