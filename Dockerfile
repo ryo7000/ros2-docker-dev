@@ -54,6 +54,10 @@ RUN apt-get update && \
     npm install -g yarn && \
     rm -rf /var/lib/apt/lists/*
 
+RUN curl -L https://github.com/mattn/efm-langserver/releases/download/v0.0.44/efm-langserver_v0.0.44_linux_amd64.tar.gz | tar xzf - && \
+    cp efm-langserver_v0.0.44_linux_amd64/efm-langserver /usr/local/bin && \
+    rm -rf efm-langserver_v0.0.44_linux_amd64
+
 COPY --from=ccls /usr/local/bin/ccls /usr/local/bin
 
 USER $USERNAME
@@ -61,6 +65,7 @@ USER $USERNAME
 RUN mkdir /home/$USERNAME/.config && \
     ln -s /home/$USERNAME/dotfiles/vim/.vim /home/$USERNAME && \
     ln -s /home/$USERNAME/dotfiles/vim/.vimrc /home/$USERNAME && \
+    ln -s /home/$USERNAME/dotfiles/vim/.config/efm-langserver /home/$USERNAME/.config/efm-langserver && \
     ln -s /home/$USERNAME/dotfiles/zsh/zsh /home/$USERNAME/.config/zsh && \
     ln -s /home/$USERNAME/dotfiles/zsh/.zshenv /home/$USERNAME
 
