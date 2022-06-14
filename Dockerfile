@@ -50,7 +50,11 @@ RUN apt-get update && \
     rosdep update && \
     pip install --upgrade pip && \
     hash -r && \
-    pip install pipenv && \
+    pip install \
+    pipenv \
+    flake8 \
+    autopep8 \
+    mypy && \
     npm install -g yarn && \
     rm -rf /var/lib/apt/lists/*
 
