@@ -45,7 +45,7 @@ RUN apt-get update && \
     ros-humble-ros-testing \
     python3-colcon-common-extensions \
     python3-rosdep \
-    vim-nox nodejs clang-14 clang-tidy-14 clang-tools-14 ripgrep fzf zsh && \
+    vim-gtk3 nodejs clang-14 clang-tidy-14 clang-tools-14 ripgrep fzf zsh && \
     rosdep init && \
     rosdep update && \
     pip install --upgrade pip && \
