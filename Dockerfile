@@ -43,8 +43,12 @@ RUN apt-get update && \
     python3-pip \
     ros-humble-ros-base \
     ros-humble-ros-testing \
+    ros-humble-unique-identifier-msgs \
+    ros-humble-gazebo-msgs \
+    ros-humble-cv-bridge \
     python3-colcon-common-extensions \
     python3-rosdep \
+    uuid-dev \
     vim-gtk3 nodejs clang-14 clang-tidy-14 clang-tools-14 ripgrep fzf zsh && \
     rosdep init && \
     rosdep update && \
